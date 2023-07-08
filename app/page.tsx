@@ -2,10 +2,10 @@ import {prisma} from '../server/db/client'
 // import { signIn, signOut, useSession } from 'next-auth/react'
 import { getServerSession } from 'next-auth'
 import { options } from './api/auth/[...nextauth]/options'
-import UserCard from './components/UserCard'
+import UserCard from '../components/UserCard'
 
 import { redirect } from "next/navigation"
-import NavBar from './components/NavBar'
+import NavBar from '../components/NavBar'
 
 // Create a function called RecallAlgo that takes into two integer parameters, days and rating and calculates the result after multiplying it
 function RecallAlgorithm(days: number, rating: number): number {
@@ -14,15 +14,11 @@ function RecallAlgorithm(days: number, rating: number): number {
 }
 
 export default async function Home() {
+  const session = await getServerSession(options)
+
   const data = await prisma.topic.findMany()
   console.log(data)
   
-  const session = await getServerSession(options)
-
-  // if (!session) {
-  //   redirect('/api/auth/signin')
-  // }
-
   return (
     <div>
       <NavBar/>
