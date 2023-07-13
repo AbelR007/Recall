@@ -1,4 +1,4 @@
-import {prisma} from '../server/db/client'
+import { prisma } from '@/db'
 // import { signIn, signOut, useSession } from 'next-auth/react'
 import { getServerSession } from 'next-auth'
 import { options } from './api/auth/[...nextauth]/options'
@@ -6,6 +6,7 @@ import UserCard from '../components/UserCard'
 
 import { redirect } from "next/navigation"
 import NavBar from '../components/NavBar'
+import TopicCard from '@/components/TopicCard'
 
 // Create a function called RecallAlgo that takes into two integer parameters, days and rating and calculates the result after multiplying it
 function RecallAlgorithm(days: number, rating: number): number {
@@ -13,17 +14,32 @@ function RecallAlgorithm(days: number, rating: number): number {
   return Result;
 }
 
+function getTopics() {
+  return prisma.topic.findMany()
+}
+
 export default async function Home() {
   const session = await getServerSession(options)
 
   const data = await prisma.topic.findMany()
   console.log(data)
+
+  const topics = await getTopics();
+
+
   
   return (
     <div>
       <NavBar/>
       
       <h1>Recall App</h1>
+
+      <ul className="pl-4">
+        {topics?.map(topic => (
+          <TopicCard key={topic.id} {...topic} />
+        ))}
+      </ul>
+
       {data?.map((topic) =>
         <div key={topic.id}>
           <h2>{topic.title}</h2>
