@@ -1,9 +1,4 @@
-// pages/api/topics.ts
-// import { PrismaClient } from '@prisma/client'
 import { prisma } from '@/db'
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-// const prisma = new PrismaClient()
 import { NextResponse } from "next/server"
 
 type Feedback = {

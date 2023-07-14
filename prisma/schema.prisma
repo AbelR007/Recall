@@ -24,6 +24,7 @@ model Topic {
   content       String?
   createdAt     DateTime @default(now()) @db.Timestamp(6)
   lastRevisedAt DateTime @default(now()) @db.Timestamp(6)
+  rating        Int      @default(5)
   userId        String
   user          User     @relation(fields: [userId], references: [id])
 }

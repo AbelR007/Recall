@@ -30,11 +30,15 @@ export default async function Home() {
   
   return (
     <div>
-      <NavBar/>
-      
-      <h1>Recall App</h1>
+      {session ? (
+        <div>Work in Progress</div>
+      ): (
+        <div className="max-h-screen flex place-content-center">
+            Recall.
+        </div>
+      )}
 
-      <ul className="pl-4">
+      {/* <ul className="pl-4">
         {topics?.map(topic => (
           <TopicCard key={topic.id} {...topic} />
         ))}
@@ -51,7 +55,7 @@ export default async function Home() {
         <UserCard user={session?.user} pagetype={"Home"} />
       ) : (
         <h1 className="text-5xl">You Shall Not Pass!</h1>
-      )}
+      )} */}
       {/* {!session && (
         <>
           {" "}
