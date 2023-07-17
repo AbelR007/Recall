@@ -41,7 +41,7 @@ export default async function Page() {
     const session = await getServerSession(options);
     return (
         <>
-        <div className="min-h-full flex flex-col items-center justify-center">
+        <div className="min-h-screen flex flex-col items-center justify-center">
             <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
             action={addTopic}
             >
