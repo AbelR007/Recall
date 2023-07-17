@@ -31,6 +31,6 @@ Recall is a modern revision app, focussed on revolutionizing the way you revise 
 * Tailwind CSS
 
 ## License
-GNUv3 GPL
+GNU GENERAL PUBLIC LICENSE, Version 3
 
 ### Built by Abel Roy ✨
