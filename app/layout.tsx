@@ -18,10 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} min-h-screen`}>
         <AuthProvider>
           <NavBar />
-          <main className="min-h-screen">
+          <main className="">
+            {/* py-6 px-4 sm:p-6 md:py-10 md:px-8 */}
             {children}
           </main>
         </AuthProvider>
